@@ -67,3 +67,18 @@ def get_expired(items, in_advance_days=0):
         if amount > 0:
             result.append((title, amount))
     return result
+
+
+def main():
+    """Показать пример работы на локальном словаре продуктов."""
+    items = {}
+    add(items, 'Яйца', Decimal('10'), date.today().isoformat())
+    add_by_note(items, 'Яйца гусиные 4')
+    add_by_note(items, 'Вода 1.5')
+    print('Найдены продукты:', find(items, 'яйц'))
+    print('Общее количество яиц:', get_amount(items, 'яйц'))
+    print('Срок истёк или истекает сегодня:', get_expired(items))
+
+
+if __name__ == '__main__':
+    main()
